@@ -1,6 +1,8 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 
-namespace System.Collections.Generic
+namespace Axuno.VirtualFileSystem
 {
     /// <summary>
     /// Extension methods for Dictionary.

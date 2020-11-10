@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using Axuno.VirtualFileSystem;
 using Axuno.VirtualFileSystem.Embedded;
+using Microsoft.Extensions.FileProviders;
 
-namespace Microsoft.Extensions.FileProviders
+namespace Axuno.VirtualFileSystem
 {
     public static class FileInfoExtensions
     {

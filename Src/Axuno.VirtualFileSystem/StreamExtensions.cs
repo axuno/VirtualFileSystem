@@ -1,7 +1,8 @@
-﻿using System.Threading;
+﻿using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace System.IO
+namespace Axuno.VirtualFileSystem
 {
     public static class StreamExtensions
     {

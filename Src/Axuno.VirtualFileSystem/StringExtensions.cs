@@ -1,9 +1,10 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace System
+namespace Axuno.VirtualFileSystem
 {
     /// <summary>
     /// Extension methods for String class.

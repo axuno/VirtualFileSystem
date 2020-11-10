@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>Axuno.VirtualFileSystem.pfx</AssemblyOriginatorKeyFile>
-        <Version>0.7.0</Version>
+        <Version>0.7.1</Version>
         <Authors>axuno gGmbH</Authors>
         <Company>axuno gGmbH</Company>
         <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
