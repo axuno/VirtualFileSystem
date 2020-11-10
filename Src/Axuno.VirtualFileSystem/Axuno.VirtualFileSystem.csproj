@@ -3,6 +3,43 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>Axuno.VirtualFileSystem.pfx</AssemblyOriginatorKeyFile>
+        <Version>0.7.0</Version>
+        <Authors>axuno gGmbH</Authors>
+        <Company>axuno gGmbH</Company>
+        <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
+        <PackageIcon>VirtualFileSystem.png</PackageIcon>
+        <RepositoryUrl>https://github.com/axuno/Axuno.VirtualFileSystem</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageTags>virtual file system netstandard c#</PackageTags>
+        <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+        <Copyright>© 2013 - 2020 Volosoft. Open source license with LGPLv3.0</Copyright>
+        <Description>The Virtual File System makes it possible to manage files that do not exist on a physical file system (e.g. disk).
+
+* The VirtualFileSystem can be extended by additional IVirtualFileProviders.
+* Out-of-the-box, Microsoft.Extensions.FileProviders.Composite, Microsoft.Extensions.FileProviders.Embedded and Microsoft.Extensions.FileProviders.Physical are integrated.
+* Virtual files can be used just like static files in an application.
+* JavaScript, CSS, image files and all other file types can be embedded into assemblies and used just like the static files.
+
+The library is a modified version of Volo.Abp.VirtualFileSystem 3.3.1</Description>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DefineConstants>DEBUG;TRACE</DefineConstants>
+      <DocumentationFile></DocumentationFile>
+      <OutputPath>bin\Debug\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <OutputPath>bin\Release\</OutputPath>
+      <DocumentationFile>bin\Release\Axuno.VirtualFileSystem.xml</DocumentationFile>
+      <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+      <Deterministic>true</Deterministic>
+      <PublishRepositoryUrl>true</PublishRepositoryUrl>
+      <EmbedUntrackedSources>true</EmbedUntrackedSources>
     </PropertyGroup>
 
     <ItemGroup>
@@ -10,6 +47,13 @@
         <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.1.9" />
         <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="3.1.9" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.9" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\..\VirtualFileSystem.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 
 </Project>

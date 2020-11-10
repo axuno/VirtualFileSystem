@@ -7,7 +7,7 @@ The Virtual File System makes it possible to manage files that do not exist on a
 * The ```VirtualFileSystem``` can be extended by additional ```IVirtualFileProvider```s.
 * Out-of-the-box, ```Microsoft.Extensions.FileProviders.Composite```, ```Microsoft.Extensions.FileProviders.Embedded``` and ```Microsoft.Extensions.FileProviders.Physical``` are integrated.
 * Virtual files can be used just like static files in an application.
-* JavaScript, CSS, image files and all other web file types can be embedded into assemblies and used just like the static files.
+* JavaScript, CSS, image files and all other file types can be embedded into assemblies and used just like the static files.
 * An application (or library) can override an embedded file just by placing a static file with the same name and extension into the same folder of the virtual file system.
 
 
