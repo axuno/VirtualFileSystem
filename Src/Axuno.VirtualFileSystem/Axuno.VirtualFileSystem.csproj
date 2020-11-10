@@ -47,6 +47,10 @@ The library is a modified version of Volo.Abp.VirtualFileSystem 3.3.1</Descripti
         <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.1.9" />
         <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="3.1.9" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.9" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
