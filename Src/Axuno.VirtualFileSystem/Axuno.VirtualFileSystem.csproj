@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFrameworks>netstandard2.1;net50</TargetFrameworks>
         <Nullable>enable</Nullable>
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>Axuno.VirtualFileSystem.pfx</AssemblyOriginatorKeyFile>
-        <Version>0.7.1</Version>
+        <Version>0.7.2</Version>
         <Authors>axuno gGmbH</Authors>
         <Company>axuno gGmbH</Company>
         <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
@@ -13,7 +13,7 @@
         <RepositoryUrl>https://github.com/axuno/Axuno.VirtualFileSystem</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <PackageTags>virtual file system netstandard c#</PackageTags>
-        <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+        <PackageReleaseNotes>Initial release with .Net 5.0 framework added</PackageReleaseNotes>
         <Copyright>© 2013 - 2020 Volosoft. Open source license with LGPLv3.0</Copyright>
         <Description>The Virtual File System makes it possible to manage files that do not exist on a physical file system (e.g. disk).
 
@@ -40,6 +40,7 @@ The library is a modified version of Volo.Abp.VirtualFileSystem 3.3.1</Descripti
       <Deterministic>true</Deterministic>
       <PublishRepositoryUrl>true</PublishRepositoryUrl>
       <EmbedUntrackedSources>true</EmbedUntrackedSources>
+      <IncludeSymbols>true</IncludeSymbols>
     </PropertyGroup>
 
     <ItemGroup>
