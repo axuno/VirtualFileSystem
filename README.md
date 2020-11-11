@@ -18,3 +18,6 @@ Modifications to the source code were made by axuno in 2020. Changes focused on:
 * Use Microsoft DependencyInjection instead of [AutoFac](https://autofac.org/)
 * Add a workaround, so that ```VirtualFileProvider``` will also find existing directories returned from ```PhysicalFileProvider```. This means, that ```VirtualFileProvider``` behaves the same, never mind whether files are retrieved using ```EmbeddedFileProvider``` or ```PhysicalFileProvider```.
 * Change of namespaces
+
+### Get started
+[![NuGet](https://img.shields.io/nuget/v/Axuno.VirtualFileSystem.svg)](https://www.nuget.org/packages/Axuno.VirtualFileSystem/) Install the NuGet package
