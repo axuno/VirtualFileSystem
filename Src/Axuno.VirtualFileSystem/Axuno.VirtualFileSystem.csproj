@@ -16,7 +16,7 @@
         <PackageTags>virtual file system netstandard c#</PackageTags>
         <PackageReleaseNotes>Added unit tests
 Bumped to v1.0.0</PackageReleaseNotes>
-        <Copyright>© 2013 - 2020 Volosoft. Open source license with LGPLv3.0</Copyright>
+        <Copyright>© 2013 - 2021 Volosoft. Open source license with LGPLv3.0</Copyright>
         <Description>The Virtual File System makes it possible to manage files that do not exist on a physical file system (e.g. disk).
 
 * The VirtualFileSystem can be extended by additional IVirtualFileProviders.
