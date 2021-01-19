@@ -16,7 +16,7 @@ namespace Axuno.VirtualFileSystem.Tests
             var targetAssembly = classFromTargetAssembly.GetTypeInfo().Assembly;
 
             // Get name of the target project which we want to test
-            var projectName = targetAssembly.GetName().Name;
+            var projectName = targetAssembly.GetName().Name ?? throw new Exception("Assembly name is null");
 
             // Get currently executing test project path
             var applicationBasePath = AppContext.BaseDirectory;
@@ -26,6 +26,7 @@ namespace Axuno.VirtualFileSystem.Tests
             do
             {
                 directoryInfo = directoryInfo.Parent;
+                if (directoryInfo == null) break;
 
                 var projectDirectoryInfo = new DirectoryInfo(directoryInfo.FullName);
                 if (projectDirectoryInfo.Exists)
@@ -37,9 +38,10 @@ namespace Axuno.VirtualFileSystem.Tests
                     }
                 }
             }
-            while (directoryInfo.Parent != null || directoryInfo.Parent.FullName.EndsWith("\\" + projectName));
+            while (directoryInfo.Parent != null);
 
             throw new Exception($"Project root could not be located using the application root {applicationBasePath}.");
         }
     }
+
 }
