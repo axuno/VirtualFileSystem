@@ -13,8 +13,8 @@ The Virtual File System makes it possible to manage files that do not exist on a
 * An application (or library) can override an embedded file just by placing a static file with the same name and extension into the same folder of the virtual file system.
 
 
-The library is a modified version of [Volo.Abp.VirtualFileSystem](https://github.com/abpframework/abp/tree/dev/framework/src/Volo.Abp.VirtualFileSystem) 3.3.1
-Modifications to the source code were made by axuno in 2020. Changes focused on:
+The library is a modified version of [Volo.Abp.VirtualFileSystem](https://github.com/abpframework/abp/tree/dev/framework/src/Volo.Abp.VirtualFileSystem) 4.1
+Modifications to the source code were made by axuno in 2020/21. Changes focused on:
 
 * Decouple Volo.Abp.VirtualFileSystem from all dependencies of the Abp Framework
 * Use Microsoft DependencyInjection instead of [AutoFac](https://autofac.org/)
