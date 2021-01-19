@@ -2,6 +2,8 @@
 
 # Axuno.VirtualFileSystem
 
+![](https://github.com/axuno/Axuno.VirtualFileSystem/workflows/.NET/badge.svg)
+
 The Virtual File System makes it possible to manage files that do not exist on a physical file system (e.g. disk).
 
 * The ```VirtualFileSystem``` can be extended by additional ```IVirtualFileProvider```s.
