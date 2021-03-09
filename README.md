@@ -22,4 +22,5 @@ Modifications to the source code were made by axuno in 2020/21. Changes focused 
 * Change of namespaces
 
 ### Get started
-[![NuGet](https://img.shields.io/nuget/v/Axuno.VirtualFileSystem.svg)](https://www.nuget.org/packages/Axuno.VirtualFileSystem/) Install the NuGet package
+* [![NuGet](https://img.shields.io/nuget/v/Axuno.VirtualFileSystem.svg)](https://www.nuget.org/packages/Axuno.VirtualFileSystem/) Install the NuGet package
+* Read the [Virtual File System wiki](https://github.com/axuno/Axuno.VirtualFileSystem/wiki)
