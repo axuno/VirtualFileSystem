@@ -85,8 +85,8 @@ namespace Axuno.VirtualFileSystem
         /// <summary>
         /// Gets index of nth occurrence of a char in a string.
         /// </summary>
-        /// <param name="str">source string to be searched</param>
-        /// <param name="c">Char to search in <see cref="str"/></param>
+        /// <param name="str"></param>
+        /// <param name="c"></param>
         /// <param name="n">Count of the occurrence</param>
         public static int NthIndexOf(this string str, char c, int n)
         {
@@ -191,7 +191,7 @@ namespace Axuno.VirtualFileSystem
                 return str;
             }
 
-            return str.Substring(0, pos) + replace + str.Substring(pos + search.Length);
+            return str.Substring(0, pos) + replace + str[(pos + search.Length)..];
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Axuno.VirtualFileSystem
                 return useCurrentCulture ? str.ToLower() : str.ToLowerInvariant();
             }
 
-            return (useCurrentCulture ? char.ToLower(str[0]) : char.ToLowerInvariant(str[0])) + str.Substring(1);
+            return (useCurrentCulture ? char.ToLower(str[0]) : char.ToLowerInvariant(str[0])) + str[1..];
         }
 
         /// <summary>
@@ -399,19 +399,17 @@ namespace Axuno.VirtualFileSystem
 
         public static string ToMd5(this string str)
         {
-            using (var md5 = MD5.Create())
+            using var md5 = MD5.Create();
+            var inputBytes = Encoding.UTF8.GetBytes(str);
+            var hashBytes = md5.ComputeHash(inputBytes);
+
+            var sb = new StringBuilder();
+            foreach (var hashByte in hashBytes)
             {
-                var inputBytes = Encoding.UTF8.GetBytes(str);
-                var hashBytes = md5.ComputeHash(inputBytes);
-
-                var sb = new StringBuilder();
-                foreach (var hashByte in hashBytes)
-                {
-                    sb.Append(hashByte.ToString("X2"));
-                }
-
-                return sb.ToString();
+                sb.Append(hashByte.ToString("X2"));
             }
+
+            return sb.ToString();
         }
 
         /// <summary>
@@ -432,7 +430,7 @@ namespace Axuno.VirtualFileSystem
                 return useCurrentCulture ? str.ToUpper() : str.ToUpperInvariant();
             }
 
-            return (useCurrentCulture ? char.ToUpper(str[0]) : char.ToUpperInvariant(str[0])) + str.Substring(1);
+            return (useCurrentCulture ? char.ToUpper(str[0]) : char.ToUpperInvariant(str[0])) + str[1..];
         }
 
         /// <summary>
@@ -441,12 +439,7 @@ namespace Axuno.VirtualFileSystem
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="str"/> is null</exception>
         public static string Truncate(this string str, int maxLength)
         {
-            if (str.Length <= maxLength)
-            {
-                return str;
-            }
-
-            return str.Left(maxLength);
+            return str.Length <= maxLength ? str : str.Left(maxLength);
         }
 
         /// <summary>
@@ -455,12 +448,7 @@ namespace Axuno.VirtualFileSystem
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="str"/> is null</exception>
         public static string TruncateFromBeginning(this string str, int maxLength)
         {
-            if (str.Length <= maxLength)
-            {
-                return str;
-            }
-
-            return str.Right(maxLength);
+            return str.Length <= maxLength ? str : str.Right(maxLength);
         }
 
         /// <summary>

@@ -10,41 +10,14 @@ namespace Axuno.VirtualFileSystem.Embedded
     /// </summary>
     public class EmbeddedResourceFileInfo : IFileInfo
     {
-        public bool Exists => true;
-
-        public long Length
-        {
-            get
-            {
-                if (!_length.HasValue)
-                {
-                    using (var stream = _assembly.GetManifestResourceStream(_resourcePath))
-                    {
-                        _length = stream.Length;
-                    }
-                }
-
-                return _length.Value;
-            }
-        }
-        private long? _length;
-
-        public string? PhysicalPath => null;
-
-        public string VirtualPath { get; }
-
-        public string Name { get; }
-
         /// <summary>
-        /// The time, in UTC.
+        /// CTOR.
         /// </summary>
-        public DateTimeOffset LastModified { get; }
-
-        public bool IsDirectory => false;
-
-        private readonly Assembly _assembly;
-        private readonly string _resourcePath;
-
+        /// <param name="assembly"></param>
+        /// <param name="resourcePath"></param>
+        /// <param name="virtualPath"></param>
+        /// <param name="name"></param>
+        /// <param name="lastModified"></param>
         public EmbeddedResourceFileInfo(
             Assembly assembly,
             string resourcePath,
@@ -59,6 +32,39 @@ namespace Axuno.VirtualFileSystem.Embedded
             Name = name;
             LastModified = lastModified;
         }
+        
+        public bool Exists => true;
+
+        public long Length
+        {
+            get
+            {
+                if (!_length.HasValue)
+                {
+                    using var stream = _assembly.GetManifestResourceStream(_resourcePath);
+                    _length = stream?.Length;
+                }
+
+                return 0;
+            }
+        }
+        private long? _length;
+
+        public string? PhysicalPath => null;
+
+        public string VirtualPath { get; }
+
+        public string Name { get; }
+
+        /// <summary>
+        /// Gets the <see cref="DateTimeOffset"/>.
+        /// </summary>
+        public DateTimeOffset LastModified { get; }
+
+        public bool IsDirectory => false;
+
+        private readonly Assembly _assembly;
+        private readonly string _resourcePath;
 
         /// <inheritdoc />
         public Stream? CreateReadStream()

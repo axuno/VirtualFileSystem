@@ -6,7 +6,6 @@ using System.Threading;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Primitives;
 
-
 namespace Axuno.VirtualFileSystem
 {
     /// <summary>
@@ -19,18 +18,35 @@ namespace Axuno.VirtualFileSystem
     /// </remarks>
     public class DynamicFileProvider : DictionaryBasedFileProvider, IDynamicFileProvider
     {
+        /// <summary>
+        /// Gets the <see cref="IDictionary{TKey,TValue}"/> for dynamic files.
+        /// </summary>
+        /// <remarks>This property can be overridden in a derived class.</remarks>
         protected override IDictionary<string, IFileInfo> Files => DynamicFiles;
 
+        /// <summary>
+        /// Gets dynamic files as a <see cref="ConcurrentDictionary{TKey,TValue}"/>.
+        /// </summary>
         protected ConcurrentDictionary<string, IFileInfo> DynamicFiles { get; }
 
+        /// <summary>
+        /// Gets the <see cref="ConcurrentDictionary{TKey,TValue}"/> for <see cref="ChangeTokenInfo"/>s.
+        /// </summary>
         protected ConcurrentDictionary<string, ChangeTokenInfo> FilePathTokenLookup { get; }
 
+        /// <summary>
+        /// CTOR.
+        /// </summary>
         public DynamicFileProvider()
         {
             FilePathTokenLookup = new ConcurrentDictionary<string, ChangeTokenInfo>(StringComparer.OrdinalIgnoreCase);;
             DynamicFiles = new ConcurrentDictionary<string, IFileInfo>();
         }
 
+        /// <summary>
+        /// Updates the existing <see cref="IFileInfo"/> or inserts a new one.
+        /// </summary>
+        /// <param name="fileInfo"></param>
         public void AddOrUpdate(IFileInfo fileInfo)
         {
             var filePath = fileInfo.GetVirtualOrPhysicalPath();
@@ -39,6 +55,11 @@ namespace Axuno.VirtualFileSystem
             ReportChange(filePath);
         }
 
+        /// <summary>
+        /// Deletes a dynamic file.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns><see langword="true"/>, if the dynamic file was deleted.</returns>
         public bool Delete(string filePath)
         {
             if (!DynamicFiles.TryRemove(filePath, out _))
@@ -50,6 +71,11 @@ namespace Axuno.VirtualFileSystem
             return true;
         }
 
+        /// <summary>
+        /// Gets the <see cref="IChangeToken"/> for the given filter.
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns>The <see cref="IChangeToken"/> for the given filter.</returns>
         public override IChangeToken Watch(string filter)
         {
             return GetOrAddChangeToken(filter);
@@ -76,8 +102,16 @@ namespace Axuno.VirtualFileSystem
             }
         }
 
+        /// <summary>
+        /// The <see cref="ChangeTokenInfo"/> structure.
+        /// </summary>
         protected struct ChangeTokenInfo
         {
+            /// <summary>
+            /// CTOR.
+            /// </summary>
+            /// <param name="tokenSource"></param>
+            /// <param name="changeToken"></param>
             public ChangeTokenInfo(
                 CancellationTokenSource tokenSource,
                 CancellationChangeToken changeToken)
@@ -86,8 +120,14 @@ namespace Axuno.VirtualFileSystem
                 ChangeToken = changeToken;
             }
 
+            /// <summary>
+            /// Gets the <see cref="CancellationTokenSource"/>.
+            /// </summary>
             public CancellationTokenSource TokenSource { get; }
 
+            /// <summary>
+            /// Gets the <see cref="ChangeToken"/>.
+            /// </summary>
             public CancellationChangeToken ChangeToken { get; }
         }
     }

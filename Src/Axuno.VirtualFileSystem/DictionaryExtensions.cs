@@ -10,7 +10,7 @@ namespace Axuno.VirtualFileSystem
     public static class DictionaryExtensions
     {
         /// <summary>
-        /// This method is used to try to get a value in a dictionary if it does exists.
+        /// This method is used to try to get a value in a dictionary if it exists.
         /// </summary>
         /// <typeparam name="T">Type of the value</typeparam>
         /// <param name="dictionary">The collection object</param>
@@ -19,7 +19,7 @@ namespace Axuno.VirtualFileSystem
         /// <returns>True if key does exists in the dictionary</returns>
         internal static bool TryGetValue<T>(this IDictionary<string, object> dictionary, string key, out T value) where T : notnull
         {
-            if (dictionary.TryGetValue(key, out object valueObj) && valueObj is T obj)
+            if (dictionary.TryGetValue(key, out var valueObj) && valueObj is T obj)
             {
                 value = obj;
                 return true;
@@ -37,9 +37,9 @@ namespace Axuno.VirtualFileSystem
         /// <typeparam name="TKey">Type of the key</typeparam>
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
-        public static TValue GetOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key)  where TValue : notnull
+        public static TValue GetOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key)  where TValue : notnull where  TKey : notnull
         {
-            return dictionary.TryGetValue(key, out var obj) ? obj : default!;
+            return (dictionary.TryGetValue(key, out var obj) ? obj : default) ?? throw new NullReferenceException($"A {typeof(TValue)} has null a default");
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Axuno.VirtualFileSystem
         /// <typeparam name="TKey">Type of the key</typeparam>
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
-        public static TValue GetOrDefault<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key) where TValue : notnull
+        public static TValue GetOrDefault<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key) where TValue : notnull where TKey : notnull
         {
             return dictionary.TryGetValue(key, out var obj) ? obj : default!;
         }

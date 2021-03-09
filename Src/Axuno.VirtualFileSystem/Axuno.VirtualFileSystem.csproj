@@ -6,7 +6,7 @@
         <SignAssembly>true</SignAssembly>
         <!-- sn -k Axuno.VirtualFileSystem.snk -->
         <AssemblyOriginatorKeyFile>Axuno.VirtualFileSystem.snk</AssemblyOriginatorKeyFile>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <Authors>axuno gGmbH</Authors>
         <Company>axuno gGmbH</Company>
         <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
@@ -14,8 +14,8 @@
         <RepositoryUrl>https://github.com/axuno/Axuno.VirtualFileSystem</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <PackageTags>virtual file system netstandard c#</PackageTags>
-        <PackageReleaseNotes>Added unit tests
-Bumped to v1.0.0</PackageReleaseNotes>
+        <PackageReleaseNotes>Fixed possible null reference issues
+Bumped to v1.0.1</PackageReleaseNotes>
         <Copyright>© 2013 - 2021 Volosoft. Open source license with LGPLv3.0</Copyright>
         <Description>The Virtual File System makes it possible to manage files that do not exist on a physical file system (e.g. disk).
 
@@ -24,7 +24,7 @@ Bumped to v1.0.0</PackageReleaseNotes>
 * Virtual files can be used just like static files in an application.
 * JavaScript, CSS, image files and all other file types can be embedded into assemblies and used just like the static files.
 
-The library is a modified version of Volo.Abp.VirtualFileSystem 4.1</Description>
+The library is a modified version of Volo.Abp.VirtualFileSystem 4.2</Description>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
