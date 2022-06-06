@@ -4,6 +4,8 @@
     <OutputType>Exe</OutputType>
     <TargetFrameworks>netcoreapp3.1;Net5.0</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
     <AssemblyOriginatorKeyFile>..\Axuno.VirtualFileSystem\Axuno.VirtualFileSystem.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 

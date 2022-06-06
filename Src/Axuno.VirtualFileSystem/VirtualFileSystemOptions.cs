@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Axuno.VirtualFileSystem;
 
-namespace Axuno.VirtualFileSystem
+public class VirtualFileSystemOptions
 {
-    public class VirtualFileSystemOptions
-    {
-        public VirtualFileSetList FileSets { get; }
+    public VirtualFileSetList FileSets { get; }
         
-        public VirtualFileSystemOptions()
-        {
-            FileSets = new VirtualFileSetList();
-        }
+    public VirtualFileSystemOptions()
+    {
+        FileSets = new VirtualFileSetList();
     }
 }

@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.1;net50</TargetFrameworks>
         <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
         <SignAssembly>true</SignAssembly>
         <!-- sn -k Axuno.VirtualFileSystem.snk -->
         <AssemblyOriginatorKeyFile>Axuno.VirtualFileSystem.snk</AssemblyOriginatorKeyFile>

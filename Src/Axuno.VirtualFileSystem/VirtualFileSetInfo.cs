@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.FileProviders;
+﻿using Microsoft.Extensions.FileProviders;
 
-namespace Axuno.VirtualFileSystem
+namespace Axuno.VirtualFileSystem;
+
+public class VirtualFileSetInfo
 {
-    public class VirtualFileSetInfo
-    {
-        public IFileProvider FileProvider { get; }
+    public IFileProvider FileProvider { get; }
 
-        public VirtualFileSetInfo(IFileProvider fileProvider)
-        {
-            FileProvider = Check.NotNull(fileProvider, nameof(fileProvider));
-        }
+    public VirtualFileSetInfo(IFileProvider fileProvider)
+    {
+        FileProvider = Check.NotNull(fileProvider, nameof(fileProvider));
     }
 }
