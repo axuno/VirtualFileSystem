@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace Axuno.VirtualFileSystem
+namespace Axuno.VirtualFileSystem;
+
+public class VirtualFileSetList : List<VirtualFileSetInfo>
 {
-    public class VirtualFileSetList : List<VirtualFileSetInfo>
-    {
         
-    }
 }
