@@ -12,7 +12,7 @@ public abstract class DictionaryBasedFileProvider : IFileProvider
     {
         if (subPath == null)
         {
-            return new NotFoundFileInfo(subPath);
+            return new NotFoundFileInfo(subPath ?? "(null)");
         }
 
         var file = Files.GetOrDefault(NormalizePath(subPath));
@@ -44,8 +44,8 @@ public abstract class DictionaryBasedFileProvider : IFileProvider
                 continue;
             }
 
-            var relativePath = fullPath.Substring(directoryPath.Length);
-            if (relativePath.Contains("/"))
+            var relativePath = fullPath[directoryPath.Length..];
+            if (relativePath.Contains('/'))
             {
                 continue;
             }

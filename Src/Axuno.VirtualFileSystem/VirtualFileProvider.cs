@@ -37,7 +37,7 @@ public class VirtualFileProvider : IFileProvider
         var content = _compositeFileProvider.GetDirectoryContents(string.Join('/', pathSegments.SkipLast(1)));
         var directory = content.FirstOrDefault(fi => fi.Name == pathSegments[^1] && fi.IsDirectory);
 
-        return !(directory is null) ? new VirtualDirectoryFileInfo(directory.PhysicalPath, directory.Name, directory.LastModified) : fileInfo;
+        return directory is { } ? new VirtualDirectoryFileInfo(directory.PhysicalPath ?? string.Empty, directory.Name, directory.LastModified) : fileInfo;
     }
 
     public virtual IDirectoryContents GetDirectoryContents(string subPath)

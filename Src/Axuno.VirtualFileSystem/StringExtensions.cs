@@ -71,7 +71,7 @@ public static class StringExtensions
             throw new ArgumentException("len argument can not be bigger than given string's length!");
         }
 
-        return str.Substring(0, len);
+        return str[..len];
     }
 
     /// <summary>
@@ -191,7 +191,7 @@ public static class StringExtensions
             return str;
         }
 
-        return str.Substring(0, pos) + replace + str[(pos + search.Length)..];
+        return str[..pos] + replace + str[(pos + search.Length)..];
     }
 
     /// <summary>
@@ -399,7 +399,9 @@ public static class StringExtensions
 
     public static string ToMd5(this string str)
     {
+#pragma warning disable CA5351
         using var md5 = MD5.Create();
+#pragma warning restore CA5351
         var inputBytes = Encoding.UTF8.GetBytes(str);
         var hashBytes = md5.ComputeHash(inputBytes);
 

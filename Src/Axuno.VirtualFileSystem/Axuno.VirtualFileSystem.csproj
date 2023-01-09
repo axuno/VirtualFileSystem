@@ -3,21 +3,18 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.1;net60</TargetFrameworks>
         <Nullable>enable</Nullable>
-        <LangVersion>latest</LangVersion>
+        <NoWarn>$(NoWarn);1591</NoWarn>
         <SignAssembly>true</SignAssembly>
         <!-- sn -k Axuno.VirtualFileSystem.snk -->
         <AssemblyOriginatorKeyFile>Axuno.VirtualFileSystem.snk</AssemblyOriginatorKeyFile>
-        <Version>1.0.1</Version>
-        <Authors>axuno gGmbH</Authors>
-        <Company>axuno gGmbH</Company>
         <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
-        <PackageIcon>VirtualFileSystem.png</PackageIcon>
         <RepositoryUrl>https://github.com/axuno/Axuno.VirtualFileSystem</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <PackageIcon>VirtualFileSystem.png</PackageIcon>
         <PackageTags>virtual file system netstandard c#</PackageTags>
-        <PackageReleaseNotes>Fixed possible null reference issues
-Bumped to v1.0.1</PackageReleaseNotes>
-        <Copyright>© 2013 - 2021 Volosoft. Open source license with LGPLv3.0</Copyright>
+        <PackageReleaseNotes>Bumped to v2.0.0
+Breaking changes caused by updated dependencies</PackageReleaseNotes>
         <Description>The Virtual File System makes it possible to manage files that do not exist on a physical file system (e.g. disk).
 
 * The VirtualFileSystem can be extended by additional IVirtualFileProviders.
@@ -25,7 +22,7 @@ Bumped to v1.0.1</PackageReleaseNotes>
 * Virtual files can be used just like static files in an application.
 * JavaScript, CSS, image files and all other file types can be embedded into assemblies and used just like the static files.
 
-The library is a modified version of Volo.Abp.VirtualFileSystem 4.2</Description>
+The library is a modified version of Volo.Abp.VirtualFileSystem 7.0</Description>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
@@ -47,10 +44,10 @@ The library is a modified version of Volo.Abp.VirtualFileSystem 4.2</Description
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.5" />
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.1" />
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
