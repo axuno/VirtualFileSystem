@@ -45,7 +45,7 @@ The library is a modified version of Volo.Abp.VirtualFileSystem 7.0</Description
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.1" />
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.2" />
         <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="7.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
