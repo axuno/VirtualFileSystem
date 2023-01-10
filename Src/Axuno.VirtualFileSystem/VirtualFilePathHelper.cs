@@ -15,17 +15,17 @@ internal static class VirtualFilePathHelper
         var fileName = fullPath;
         var extension = "";
 
-        if (fileName.Contains("."))
+        if (fileName.Contains('.'))
         {
-            extension = fullPath.Substring(fileName.LastIndexOf(".", StringComparison.Ordinal));
-            if (extension.Contains("/"))
+            extension = fullPath[fileName.LastIndexOf(".", StringComparison.Ordinal)..];
+            if (extension.Contains('/'))
             {
                 //That means the file does not have extension, but a directory has "." char. So, clear extension.
                 extension = "";
             }
             else
             {
-                fileName = fullPath.Substring(0, fullPath.Length - extension.Length);
+                fileName = fullPath[..^extension.Length];
             }
         }
 

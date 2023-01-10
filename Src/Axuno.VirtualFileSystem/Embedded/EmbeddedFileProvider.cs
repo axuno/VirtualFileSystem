@@ -41,9 +41,9 @@ public class EmbeddedFileProvider : DictionaryBasedFileProvider
 
             var fullPath = ConvertToRelativePath(resourcePath).EnsureStartsWith('/');
 
-            if (fullPath.Contains("/"))
+            if (fullPath.Contains('/'))
             {
-                AddDirectoriesRecursively(files, fullPath.Substring(0, fullPath.LastIndexOf('/')), lastModificationTime);
+                AddDirectoriesRecursively(files, fullPath[..fullPath.LastIndexOf('/')], lastModificationTime);
             }
 
             files[fullPath] = new EmbeddedResourceFileInfo(
@@ -69,9 +69,9 @@ public class EmbeddedFileProvider : DictionaryBasedFileProvider
             lastModificationTime
         );
 
-        if (directoryPath.Contains("/"))
+        if (directoryPath.Contains('/'))
         {
-            AddDirectoriesRecursively(files, directoryPath.Substring(0, directoryPath.LastIndexOf('/')), lastModificationTime);
+            AddDirectoriesRecursively(files, directoryPath[..directoryPath.LastIndexOf('/')], lastModificationTime);
         }
     }
 
@@ -100,7 +100,7 @@ public class EmbeddedFileProvider : DictionaryBasedFileProvider
     {
         if (!BaseNamespace.IsNullOrEmpty())
         {
-            resourceName = resourceName.Substring(BaseNamespace.Length + 1);
+            resourceName = resourceName[(BaseNamespace.Length + 1)..];
         }
 
         var pathParts = resourceName.Split('.');
@@ -110,19 +110,19 @@ public class EmbeddedFileProvider : DictionaryBasedFileProvider
         }
 
         var folder = string.Join("/", pathParts.Take(pathParts.Length - 2));
-        var fileName = pathParts[pathParts.Length - 2] + "." + pathParts[pathParts.Length - 1];
+        var fileName = pathParts[^2] + "." + pathParts[^1];
 
         return folder + "/" + fileName;
     }
 
     private static string CalculateFileName(string filePath)
     {
-        if (!filePath.Contains("/"))
+        if (!filePath.Contains('/'))
         {
             return filePath;
         }
 
-        return filePath.Substring(filePath.LastIndexOf("/", StringComparison.Ordinal) + 1);
+        return filePath[(filePath.LastIndexOf("/", StringComparison.Ordinal) + 1)..];
     }
         
     protected override string NormalizePath(string subpath)

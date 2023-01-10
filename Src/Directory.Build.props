@@ -1,0 +1,20 @@
+<Project>
+
+    <PropertyGroup>
+        <Product>Axuno.VirtualFileSystem</Product>
+        <Version>2.0.0</Version>
+        <FileVersion>2.0.0</FileVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion> <!--only update AssemblyVersion with major releases -->
+        <Company>axuno gGmbH</Company>
+        <Authors>axuno gGmbH</Authors>
+        <CurrentYear>$([System.DateTime]::Now.ToString(yyyy))</CurrentYear>
+        <Copyright>© 2013-$(CurrentYear) Volosoft. Open source license with LGPLv3.0</Copyright>
+        <LangVersion>latest</LangVersion>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <AnalysisMode>Default</AnalysisMode>
+        <AnalysisModeSecurity>All</AnalysisModeSecurity>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <Features>strict</Features>
+    </PropertyGroup>
+
+</Project>

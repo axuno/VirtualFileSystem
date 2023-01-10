@@ -67,10 +67,12 @@ public class EmbeddedResourceFileInfo : IFileInfo
     private readonly string _resourcePath;
 
     /// <inheritdoc />
+#pragma warning disable CS8766
     public Stream? CreateReadStream()
     {
+#pragma warning restore CS8766
         var stream = _assembly.GetManifestResourceStream(_resourcePath);
-
+        
         if (!_length.HasValue && stream != null)
         {
             _length = stream.Length;
@@ -81,6 +83,6 @@ public class EmbeddedResourceFileInfo : IFileInfo
 
     public override string ToString()
     {
-        return $"[EmbeddedResourceFileInfo] {Name} ({this.VirtualPath})";
+        return $"[EmbeddedResourceFileInfo] {Name} ({VirtualPath})";
     }
 }
