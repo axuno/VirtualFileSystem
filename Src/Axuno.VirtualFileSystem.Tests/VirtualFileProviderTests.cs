@@ -22,24 +22,24 @@ public class VirtualFileProviderTests
     {
         var resource = _virtualFileProvider.GetFileInfo("/Text/Testfile_1.txt");
 
-        Assert.IsNotNull(resource);
-        Assert.IsTrue(resource.Exists);
+        Assert.That(resource, Is.Not.Null);
+        Assert.That(resource.Exists);
 
         // file is expected as UTF8 without BOM
         using var stream = resource.CreateReadStream();
-        Assert.AreEqual("Testfile_1.txt Content No <Cr><Lf>!", Encoding.UTF8.GetString(stream.GetAllBytes()));
+        Assert.That(Encoding.UTF8.GetString(stream.GetAllBytes()), Is.EqualTo("Testfile_1.txt Content No <Cr><Lf>!"));
     }
 
     [Test]
     public void Should_Define_And_Get_Embedded_Resources_With_Special_Chars()
     {
         var resource = _virtualFileProvider.GetFileInfo("/Text/Testfile_{2}.txt");
-        Assert.IsNotNull(resource);
-        Assert.IsTrue(resource.Exists);
+        Assert.That(resource, Is.Not.Null);
+        Assert.That(resource.Exists);
 
         // file is expected as UTF8 without BOM
         using var stream = resource.CreateReadStream();
-        Assert.AreEqual("Testfile_{2}.txt Content No <Cr><Lf>!", Encoding.UTF8.GetString(stream.GetAllBytes()));
+        Assert.That(Encoding.UTF8.GetString(stream.GetAllBytes()), Is.EqualTo("Testfile_{2}.txt Content No <Cr><Lf>!"));
     }
 
     [Test]
@@ -47,12 +47,12 @@ public class VirtualFileProviderTests
     {
         var contents = _virtualFileProvider.GetDirectoryContents("/Text");
 
-        Assert.IsTrue(contents.Exists);
+        Assert.That(contents.Exists);
 
         var contentList = contents.ToList();
 
-        Assert.Contains("Testfile_1.txt", contentList.Select(c => c.Name).ToList());
-        Assert.Contains("Testfile_{2}.txt", contentList.Select(c => c.Name).ToList());
+        Assert.That(contentList.Select(c => c.Name).ToList(), Does.Contain("Testfile_1.txt"));
+        Assert.That(contentList.Select(c => c.Name).ToList(), Does.Contain("Testfile_{2}.txt"));
     }
 
     [TestCase("/")]
@@ -61,9 +61,9 @@ public class VirtualFileProviderTests
     {
         var contents = _virtualFileProvider.GetDirectoryContents(path);
 
-        Assert.IsTrue(contents.Exists);
+        Assert.That(contents.Exists);
 
         var contentList = contents.ToList();
-        Assert.Contains("Text", contents.ToList().Select(c => c.Name).ToList());
+        Assert.That(contents.ToList().Select(c => c.Name).ToList(), Does.Contain("Text"));
     }
 }

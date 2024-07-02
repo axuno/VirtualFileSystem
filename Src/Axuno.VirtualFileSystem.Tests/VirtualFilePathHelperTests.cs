@@ -9,6 +9,6 @@ public class VirtualFilePathHelperTests
     public void NormalizePath()
     {
         // Hyphens should be normalized to underscores
-        Assert.AreEqual("~/test_one/test_two/test-three.txt", VirtualFilePathHelper.NormalizePath("~/test-one/test-two/test-three.txt"));
+        Assert.That(VirtualFilePathHelper.NormalizePath("~/test-one/test-two/test-three.txt"), Is.EqualTo("~/test_one/test_two/test-three.txt"));
     }
 }

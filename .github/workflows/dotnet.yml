@@ -16,19 +16,19 @@ jobs:
     name: Build
     runs-on: ${{ matrix.os }}
     env:
-      version: '2.0.1'
-      versionFile: '2.0.1'
-      packDotNetVersion: '6'
+      version: '2.1.0'
+      versionFile: '2.1.0'
+      packDotNetVersion: '8'
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        dotnet-version: [ '3.x', '6.x' ]
+        dotnet-version: [ '3.x', '6.x', '8.x' ]
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
     - name: Restore dependencies
@@ -44,7 +44,7 @@ jobs:
         dotnet build ./Src/VirtualFileSystem.sln /verbosity:minimal --configuration release /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:ContinuousIntegrationBuild=true /p:PackageOutputPath=${{ github.workspace }}/artifacts/ /p:Version=${{ env.version }} /p:FileVersion=${{ env.versionFile }}
         dotnet pack ./Src/VirtualFileSystem.sln /verbosity:minimal --configuration release
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: startsWith(matrix.dotnet-version, env.packDotNetVersion)
       with:
         name: Packages_${{ env.version }}

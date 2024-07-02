@@ -29,8 +29,8 @@ public class DynamicFileProviderTests
         );
 
         var fileInfo = _dynamicFileProvider.GetFileInfo("/my-files/test.txt");
-        Assert.IsNotNull(fileInfo);
-        Assert.AreEqual(fileContent, fileInfo.ReadAsString());
+        Assert.That(fileInfo, Is.Not.Null);
+        Assert.That(fileInfo.ReadAsString(), Is.EqualTo(fileContent));
     }
         
     [Test]
@@ -56,21 +56,21 @@ public class DynamicFileProviderTests
             () => { fileCallbackCalled = true; });
 
         var fileInfo = _dynamicFileProvider.GetFileInfo(dynamicPath);
-        Assert.IsTrue(fileInfo.Exists);
+        Assert.That(fileInfo.Exists);
 
         // Deleting the file should trigger the callback
             
         _dynamicFileProvider.Delete(dynamicPath);
         fileInfo = _dynamicFileProvider.GetFileInfo(dynamicPath);
-        Assert.IsFalse(fileInfo.Exists);
-            
-        Assert.IsTrue(fileCallbackCalled);
+        Assert.That(fileInfo.Exists, Is.False);
+
+        Assert.That(fileCallbackCalled);
     }
 
     [Test]
     public void Deleting_Non_Existing_File_Just_Fails()
     {
-        Assert.IsFalse(_dynamicFileProvider.Delete("does-not-exist"));
+        Assert.That(_dynamicFileProvider.Delete("does-not-exist"), Is.False);
     }
         
     [Test]
@@ -104,7 +104,7 @@ public class DynamicFileProviderTests
             )
         );
 
-        Assert.IsTrue(fileCallbackCalled);
+        Assert.That(fileCallbackCalled);
             
         // Updating the file should trigger the callback (2nd test)
 
@@ -118,6 +118,6 @@ public class DynamicFileProviderTests
             )
         );
 
-        Assert.IsTrue(fileCallbackCalled);
+        Assert.That(fileCallbackCalled);
     }
 }
