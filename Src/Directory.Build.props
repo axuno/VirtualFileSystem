@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <Product>Axuno.VirtualFileSystem</Product>
-        <Version>2.0.1</Version>
-        <FileVersion>2.0.1</FileVersion>
+        <Version>2.1.0</Version>
+        <FileVersion>2.1.0</FileVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion> <!--only update AssemblyVersion with major releases -->
         <Company>axuno gGmbH</Company>
         <Authors>axuno gGmbH</Authors>

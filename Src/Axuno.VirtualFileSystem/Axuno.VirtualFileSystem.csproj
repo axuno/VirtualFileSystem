@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.1;net60</TargetFrameworks>
+        <TargetFrameworks>netstandard2.1;net60;net80</TargetFrameworks>
         <Nullable>enable</Nullable>
         <NoWarn>$(NoWarn);1591</NoWarn>
         <SignAssembly>true</SignAssembly>
@@ -13,8 +12,7 @@
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <PackageIcon>VirtualFileSystem.png</PackageIcon>
         <PackageTags>virtual file system netstandard c#</PackageTags>
-        <PackageReleaseNotes>Bumped to v2.0.0
-Breaking changes caused by updated dependencies</PackageReleaseNotes>
+        <PackageReleaseNotes></PackageReleaseNotes>
         <Description>The Virtual File System makes it possible to manage files that do not exist on a physical file system (e.g. disk).
 
 * The VirtualFileSystem can be extended by additional IVirtualFileProviders.
@@ -26,13 +24,11 @@ The library is a modified version of Volo.Abp.VirtualFileSystem 7.0</Description
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
-
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
       <DefineConstants>DEBUG;TRACE</DefineConstants>
       <DocumentationFile></DocumentationFile>
       <OutputPath>bin\Debug\</OutputPath>
     </PropertyGroup>
-
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
       <OutputPath>bin\Release\</OutputPath>
       <DocumentationFile>bin\Release\Axuno.VirtualFileSystem.xml</DocumentationFile>
@@ -42,32 +38,25 @@ The library is a modified version of Volo.Abp.VirtualFileSystem 7.0</Description
       <EmbedUntrackedSources>true</EmbedUntrackedSources>
       <IncludeSymbols>true</IncludeSymbols>
     </PropertyGroup>
-
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.2" />
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.6" />
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
-
     <ItemGroup>
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-            <!-- Generate PublicKey: -->
-            <!-- Export public key: sn -p Axuno.VirtualFileSystem.snk Axuno.VirtualFileSystem.publickey -->
-            <!-- Display PublicKey: sn -tp Axuno.VirtualFileSystem.publickey -->
             <_Parameter1>Axuno.VirtualFileSystem.Tests, PublicKey=002400000480000094000000060200000024000052534131000400000100010091cc5ebb97cd2f332fbb3f69e2c1b0092fdc87141c9f3085913c152796473e3772c3d0cc09f55a16bbd33eec598fd583ef5ab28f1a459672f56f1b9a9b68ead56c0a238800864d25c480d185b16a198ff19d15449ec18d2c19af4049432e3d089731430ea28d378c2c70f051d3f5356d0d1d483ad9cffb0762b748029bd3e0cb</_Parameter1>
         </AssemblyAttribute>
     </ItemGroup>
-
     <ItemGroup>
       <None Include="..\..\VirtualFileSystem.png">
         <Pack>True</Pack>
         <PackagePath></PackagePath>
       </None>
     </ItemGroup>
-
 </Project>
