@@ -16,12 +16,12 @@ jobs:
     name: Build
     runs-on: ${{ matrix.os }}
     env:
-      version: '2.1.0'
-      versionFile: '2.1.0'
+      version: '2.2.0'
+      versionFile: '2.2.0'
       packDotNetVersion: '8'
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
+        os: [ ubuntu-22.04 ]
         dotnet-version: [ '3.x', '6.x', '8.x' ]
 
     steps:
