@@ -2,7 +2,7 @@
 
 # Axuno.VirtualFileSystem
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/axuno/VirtualFileSystem/dotnet.yml?branch=main&label=Build%2C%20Test)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/axuno/VirtualFileSystem/dotnet.yml?branch=main&label=Build%2C%20Test)](https://github.com/axuno/VirtualFileSystem/actions)
 
 The Virtual File System makes it possible to manage files that do not exist on a physical file system (e.g. disk).
 
