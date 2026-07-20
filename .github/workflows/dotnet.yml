@@ -16,8 +16,8 @@ jobs:
     name: Build
     runs-on: ${{ matrix.os }}
     env:
-      version: '2.2.0'
-      versionFile: '2.2.0'
+      version: '2.3.0'
+      versionFile: '2.3.0'
       packDotNetVersion: '8'
     strategy:
       matrix:
